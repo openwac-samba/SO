@@ -12,6 +12,8 @@ int copy (const char* from, const char* to)
     if (read (fd_from, buf, size)<= 0 || write (fd_to, buf, size)<= 0)
         return -1;
     return 0;
+    close (fd_from);
+    close (fd_to);
 }
 
 int main (int argc, const char* argv[])
