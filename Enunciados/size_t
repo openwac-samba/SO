@@ -1,0 +1,682 @@
+SYSTEM_DATA_TYPES(7)                                                                Linux Programmer's Manual                                                               SYSTEM_DATA_TYPES(7)
+
+NNAAMMEE
+       system_data_types - overview of system data types
+
+DDEESSCCRRIIPPTTIIOONN
+       _a_i_o_c_b
+              _I_n_c_l_u_d_e: _<_a_i_o_._h_>.
+
+              struct aiocb {
+                  int             aio_fildes;    /* File descriptor */
+                  off_t           aio_offset;    /* File offset */
+                  volatile void  *aio_buf;       /* Location of buffer */
+                  size_t          aio_nbytes;    /* Length of transfer */
+                  int             aio_reqprio;   /* Request priority offset */
+                  struct sigevent aio_sigevent;  /* Signal number and value */
+                  int             aio_lio_opcode;/* Operation to be performed */
+              };
+
+              For further information about this structure, see aaiioo(7).
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: aaiioo__ccaanncceell(3), aaiioo__eerrrroorr(3), aaiioo__ffssyynncc(3), aaiioo__rreeaadd(3), aaiioo__rreettuurrnn(3), aaiioo__ssuussppeenndd(3), aaiioo__wwrriittee(3), lliioo__lliissttiioo(3)
+
+       _c_l_o_c_k___t
+              _I_n_c_l_u_d_e: _<_t_i_m_e_._h_> or _<_s_y_s_/_t_y_p_e_s_._h_>.  Alternatively, _<_s_y_s_/_t_i_m_e_._h_>.
+
+              Used for system time in clock ticks or CCLLOOCCKKSS__PPEERR__SSEECC (defined in _<_t_i_m_e_._h_>).  According to POSIX, it shall be an integer type or a real-floating type.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: ttiimmeess(2), cclloocckk(3)
+
+       _c_l_o_c_k_i_d___t
+              _I_n_c_l_u_d_e: _<_s_y_s_/_t_y_p_e_s_._h_>.  Alternatively, _<_t_i_m_e_._h_>.
+
+              Used for clock ID type in the clock and timer functions.  According to POSIX, it shall be defined as an arithmetic type.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: cclloocckk__aaddjjttiimmee(2), cclloocckk__ggeettrreess(2), cclloocckk__nnaannoosslleeeepp(2), ttiimmeerr__ccrreeaattee(2), cclloocckk__ggeettccppuucclloocckkiidd(3)
+
+       _d_e_v___t
+              _I_n_c_l_u_d_e: _<_s_y_s_/_t_y_p_e_s_._h_>.  Alternatively, _<_s_y_s_/_s_t_a_t_._h_>.
+
+              Used for device IDs.  According to POSIX, it shall be an integer type.  For further details of this type, see mmaakkeeddeevv(3).
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: mmkknnoodd(2), ssttaatt(2)
+
+       _d_i_v___t
+              _I_n_c_l_u_d_e: _<_s_t_d_l_i_b_._h_>.
+
+              typedef struct {
+                  int quot; /* Quotient */
+                  int rem;  /* Remainder */
+              } div_t;
+
+              It is the type of the value returned by the ddiivv(3) function.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: ddiivv(3)
+
+       _d_o_u_b_l_e___t
+              _I_n_c_l_u_d_e: _<_m_a_t_h_._h_>.
+
+              The implementation's most efficient floating type at least as wide as _d_o_u_b_l_e.  Its type depends on the value of the macro FFLLTT__EEVVAALL__MMEETTHHOODD (defined in _<_f_l_o_a_t_._h_>):
+
+              0      _d_o_u_b_l_e___t is _d_o_u_b_l_e.
+
+              1      _d_o_u_b_l_e___t is _d_o_u_b_l_e.
+
+              2      _d_o_u_b_l_e___t is _l_o_n_g _d_o_u_b_l_e.
+
+              For other values of FFLLTT__EEVVAALL__MMEETTHHOODD, the type of _d_o_u_b_l_e___t is implementation-defined.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: the _f_l_o_a_t___t type in this page.
+
+       _f_d___s_e_t
+              _I_n_c_l_u_d_e: _<_s_y_s_/_s_e_l_e_c_t_._h_>.  Alternatively, _<_s_y_s_/_t_i_m_e_._h_>.
+
+              A  structure  type  that  can  represent  a  set of file descriptors.  According to POSIX, the maximum number of file descriptors in an _f_d___s_e_t structure is the value of the macro
+              FFDD__SSEETTSSIIZZEE.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: sseelleecctt(2)
+
+       _f_e_n_v___t
+              _I_n_c_l_u_d_e: _<_f_e_n_v_._h_>.
+
+              This type represents the entire floating-point environment, including control modes and status flags; for further details, see ffeennvv(3).
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: ffeennvv(3)
+
+       _f_e_x_c_e_p_t___t
+              _I_n_c_l_u_d_e: _<_f_e_n_v_._h_>.
+
+              This type represents the floating-point status flags collectively; for further details see ffeennvv(3).
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: ffeennvv(3)
+
+       _F_I_L_E
+              _I_n_c_l_u_d_e: _<_s_t_d_i_o_._h_>.  Alternatively, _<_w_c_h_a_r_._h_>.
+
+              An object type used for streams.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: ffcclloossee(3), fflloocckkffiillee(3), ffooppeenn(3), ffpprriinnttff(3), ffrreeaadd(3), ffssccaannff(3), ssttddiinn(3), ssttddiioo(3)
+
+       _f_l_o_a_t___t
+              _I_n_c_l_u_d_e: _<_m_a_t_h_._h_>.
+
+              The implementation's most efficient floating type at least as wide as _f_l_o_a_t.  Its type depends on the value of the macro FFLLTT__EEVVAALL__MMEETTHHOODD (defined in _<_f_l_o_a_t_._h_>):
+
+              0      _f_l_o_a_t___t is _f_l_o_a_t.
+
+              1      _f_l_o_a_t___t is _d_o_u_b_l_e.
+
+              2      _f_l_o_a_t___t is _l_o_n_g _d_o_u_b_l_e.
+
+              For other values of FFLLTT__EEVVAALL__MMEETTHHOODD, the type of _f_l_o_a_t___t is implementation-defined.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: the _d_o_u_b_l_e___t type in this page.
+
+       _g_i_d___t
+              _I_n_c_l_u_d_e: _<_s_y_s_/_t_y_p_e_s_._h_>.  Alternatively, _<_g_r_p_._h_>, _<_p_w_d_._h_>, _<_s_i_g_n_a_l_._h_>, _<_s_t_r_o_p_t_s_._h_>, _<_s_y_s_/_i_p_c_._h_>, _<_s_y_s_/_s_t_a_t_._h_>, or _<_u_n_i_s_t_d_._h_>.
+
+              A type used to hold group IDs.  According to POSIX, this shall be an integer type.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: cchhoowwnn(2), ggeettggiidd(2), ggeetteeggiidd(2), ggeettggrroouuppss(2), ggeettrreessggiidd(2), ggeettggrrnnaamm(2), ccrreeddeennttiiaallss(7)
+
+       _i_d___t
+              _I_n_c_l_u_d_e: _<_s_y_s_/_t_y_p_e_s_._h_>.  Alternatively, _<_s_y_s_/_r_e_s_o_u_r_c_e_._h_>.
+
+              A type used to hold a general identifier.  According to POSIX, this shall be an integer type that can be used to contain a _p_i_d___t, _u_i_d___t, or _g_i_d___t.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: ggeettpprriioorriittyy(2), wwaaiittiidd(2)
+
+       _i_m_a_x_d_i_v___t
+              _I_n_c_l_u_d_e: _<_i_n_t_t_y_p_e_s_._h_>.
+
+              typedef struct {
+                  intmax_t    quot; /* Quotient */
+                  intmax_t    rem;  /* Remainder */
+              } imaxdiv_t;
+
+              It is the type of the value returned by the iimmaaxxddiivv(3) function.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: iimmaaxxddiivv(3)
+
+       _i_n_t_m_a_x___t
+              _I_n_c_l_u_d_e: _<_s_t_d_i_n_t_._h_>.  Alternatively, _<_i_n_t_t_y_p_e_s_._h_>.
+
+              A signed integer type capable of representing any value of any signed integer type supported by the implementation.  According to the C language standard, it shall be capable  of
+              storing values in the range [IINNTTMMAAXX__MMIINN, IINNTTMMAAXX__MMAAXX].
+
+              The macro IINNTTMMAAXX__CC() expands its argument to an integer constant of type _i_n_t_m_a_x___t.
+
+              The length modifier for _i_n_t_m_a_x___t for the pprriinnttff(3) and the ssccaannff(3) families of functions is jj; resulting commonly in %%jjdd or %%jjii for printing _i_n_t_m_a_x___t values.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _B_u_g_s: _i_n_t_m_a_x___t is not large enough to represent values of type _____i_n_t_1_2_8 in implementations where _____i_n_t_1_2_8 is defined and _l_o_n_g _l_o_n_g is less than 128 bits wide.
+
+              _S_e_e _a_l_s_o: the _u_i_n_t_m_a_x___t type in this page.
+
+       _i_n_tN___t
+              _I_n_c_l_u_d_e: _<_s_t_d_i_n_t_._h_>.  Alternatively, _<_i_n_t_t_y_p_e_s_._h_>.
+
+              _i_n_t_8___t, _i_n_t_1_6___t, _i_n_t_3_2___t, _i_n_t_6_4___t
+
+              A  signed  integer  type of a fixed width of exactly N bits, N being the value specified in its type name.  According to the C language standard, they shall be capable of storing
+              values in the range [IINNTTN__MMIINN, IINNTTN__MMAAXX], substituting N by the appropriate number.
+
+              According to POSIX, _i_n_t_8___t, _i_n_t_1_6___t, and _i_n_t_3_2___t are required; _i_n_t_6_4___t is only required in implementations that provide integer types with width 64; and all other types  of  this
+              form are optional.
+
+              The length modifiers for the _i_n_tN___t types for the pprriinnttff(3) family of functions are expanded by macros of the forms PPRRIIddN and PPRRIIiiN (defined in _<_i_n_t_t_y_p_e_s_._h_>); resulting for exam‐
+              ple in %%""PPRRIIdd6644"" or %%""PPRRIIii6644"" for printing _i_n_t_6_4___t values.  The length modifiers for the _i_n_tN___t types for the ssccaannff(3) family of functions are expanded by macros of the forms SSCC‐‐
+              NNddN and SSCCNNiiN, (defined in _<_i_n_t_t_y_p_e_s_._h_>); resulting for example in %%""SSCCNNdd88"" or %%""SSCCNNii88"" for scanning _i_n_t_8___t values.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: the _i_n_t_m_a_x___t, _u_i_n_tN___t, and _u_i_n_t_m_a_x___t types in this page.
+
+       _i_n_t_p_t_r___t
+              _I_n_c_l_u_d_e: _<_s_t_d_i_n_t_._h_>.  Alternatively, _<_i_n_t_t_y_p_e_s_._h_>.
+
+              A  signed  integer type such that any valid (_v_o_i_d _*) value can be converted to this type and back.  According to the C language standard, it shall be capable of storing values in
+              the range [IINNTTPPTTRR__MMIINN, IINNTTPPTTRR__MMAAXX].
+
+              The length modifier for _i_n_t_p_t_r___t for the pprriinnttff(3) family of functions is expanded by the macros PPRRIIddPPTTRR and PPRRIIiiPPTTRR (defined in _<_i_n_t_t_y_p_e_s_._h_>); resulting commonly  in  %%""PPRRIIddPPTTRR""
+              or  %%""PPRRIIiiPPTTRR""  for  printing  _i_n_t_p_t_r___t  values.  The length modifier for _i_n_t_p_t_r___t for the ssccaannff(3) family of functions is expanded by the macros SSCCNNddPPTTRR and SSCCNNiiPPTTRR,, (defined in
+              _<_i_n_t_t_y_p_e_s_._h_>); resulting commonly in %%""SSCCNNddPPTTRR"" or %%""SSCCNNiiPPTTRR"" for scanning _i_n_t_p_t_r___t values.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: the _u_i_n_t_p_t_r___t and _v_o_i_d _* types in this page.
+
+       _l_c_o_n_v
+              _I_n_c_l_u_d_e: _<_l_o_c_a_l_e_._h_>.
+
+              struct lconv {                  /* Values in the "C" locale: */
+                  char   *decimal_point;      /* "." */
+                  char   *thousands_sep;      /* "" */
+                  char   *grouping;           /* "" */
+                  char   *mon_decimal_point;  /* "" */
+                  char   *mon_thousands_sep;  /* "" */
+                  char   *mon_grouping;       /* "" */
+                  char   *positive_sign;      /* "" */
+                  char   *negative_sign;      /* "" */
+                  char   *currency_symbol;    /* "" */
+                  char    frac_digits;        /* CHAR_MAX */
+                  char    p_cs_precedes;      /* CHAR_MAX */
+                  char    n_cs_precedes;      /* CHAR_MAX */
+                  char    p_sep_by_space;     /* CHAR_MAX */
+                  char    n_sep_by_space;     /* CHAR_MAX */
+                  char    p_sign_posn;        /* CHAR_MAX */
+                  char    n_sign_posn;        /* CHAR_MAX */
+                  char   *int_curr_symbol;    /* "" */
+                  char    int_frac_digits;    /* CHAR_MAX */
+                  char    int_p_cs_precedes;  /* CHAR_MAX */
+                  char    int_n_cs_precedes;  /* CHAR_MAX */
+                  char    int_p_sep_by_space; /* CHAR_MAX */
+                  char    int_n_sep_by_space; /* CHAR_MAX */
+                  char    int_p_sign_posn;    /* CHAR_MAX */
+                  char    int_n_sign_posn;    /* CHAR_MAX */
+              };
+
+              Contains members related to the formatting of numeric values.  In the "C" locale, its members have the values shown in the comments above.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C11 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: sseettllooccaallee(3), llooccaalleeccoonnvv(3), cchhaarrsseettss(5), llooccaallee(7)
+
+       _l_d_i_v___t
+              _I_n_c_l_u_d_e: _<_s_t_d_l_i_b_._h_>.
+
+              typedef struct {
+                  long    quot; /* Quotient */
+                  long    rem;  /* Remainder */
+              } ldiv_t;
+
+              It is the type of the value returned by the llddiivv(3) function.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: llddiivv(3)
+
+       _l_l_d_i_v___t
+              _I_n_c_l_u_d_e: _<_s_t_d_l_i_b_._h_>.
+
+              typedef struct {
+                  long long   quot; /* Quotient */
+                  long long   rem;  /* Remainder */
+              } lldiv_t;
+
+              It is the type of the value returned by the llllddiivv(3) function.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: llllddiivv(3)
+
+       _o_f_f___t
+              _I_n_c_l_u_d_e: _<_s_y_s_/_t_y_p_e_s_._h_>.  Alternatively, _<_a_i_o_._h_>, _<_f_c_n_t_l_._h_>, _<_s_t_d_i_o_._h_>, _<_s_y_s_/_m_m_a_n_._h_>, _<_s_y_s_/_s_t_a_t_._h_._h_>, or _<_u_n_i_s_t_d_._h_>.
+
+              Used for file sizes.  According to POSIX, this shall be a signed integer type.
+
+              _V_e_r_s_i_o_n_s: _<_a_i_o_._h_> and _<_s_t_d_i_o_._h_> define _o_f_f___t since POSIX.1-2008.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _N_o_t_e_s: On some architectures, the width of this type can be controlled with the feature test macro __FFIILLEE__OOFFFFSSEETT__BBIITTSS.
+
+              _S_e_e _a_l_s_o: llsseeeekk(2), mmmmaapp(2), ppoossiixx__ffaaddvviissee(2), pprreeaadd(2), ttrruunnccaattee(2), ffsseeeekkoo(3), lloocckkff(3), ppoossiixx__ffaallllooccaattee(3), ffeeaattuurree__tteesstt__mmaaccrrooss(7)
+
+       _p_i_d___t
+              _I_n_c_l_u_d_e: _<_s_y_s_/_t_y_p_e_s_._h_>.  Alternatively, _<_f_c_n_t_l_._h_>, _<_s_c_h_e_d_._h_>, _<_s_i_g_n_a_l_._h_>, _<_s_p_a_w_n_._h_>, _<_s_y_s_/_m_s_g_._h_>, _<_s_y_s_/_s_e_m_._h_>, _<_s_y_s_/_s_h_m_._h_>, _<_s_y_s_/_w_a_i_t_._h_>, _<_t_e_r_m_i_o_s_._h_>,  _<_t_i_m_e_._h_>,  _<_u_n_i_s_t_d_._h_>,  or
+              _<_u_t_m_p_x_._h_>.
+
+              This type is used for storing process IDs, process group IDs, and session IDs.  According to POSIX, it shall be a signed integer type, and the implementation shall support one or
+              more programming environments where the width of _p_i_d___t is no greater than the width of the type _l_o_n_g.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: ffoorrkk(2), ggeettppiidd(2), ggeettppppiidd(2), ggeettssiidd(2), ggeettttiidd(2), ggeettppggiidd(2), kkiillll(2), ppiiddffdd__ooppeenn(2), sscchheedd__sseettsscchheedduulleerr(2), wwaaiittppiidd(2), ssiiggqquueeuuee(3), ccrreeddeennttiiaallss(7),
+
+       _p_t_r_d_i_f_f___t
+              _I_n_c_l_u_d_e: _<_s_t_d_d_e_f_._h_>.
+
+              Used for a count of elements, and array indices.  It is the result of subtracting two pointers.  According to the C language standard, it shall be a signed integer  type  capable
+              of storing values in the range [PPTTRRDDIIFFFF__MMIINN, PPTTRRDDIIFFFF__MMAAXX].
+
+              The length modifier for _p_t_r_d_i_f_f___t for the pprriinnttff(3) and the ssccaannff(3) families of functions is tt; resulting commonly in %%ttdd or %%ttii for printing _p_t_r_d_i_f_f___t values.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: the _s_i_z_e___t and _s_s_i_z_e___t types in this page.
+
+       _r_e_g_e_x___t
+              _I_n_c_l_u_d_e: _<_r_e_g_e_x_._h_>.
+
+              typedef struct {
+                  size_t  re_nsub; /* Number of parenthesized subexpressions. */
+              } regex_t;
+
+              This is a structure type used in regular expression matching.  It holds a compiled regular expression, compiled with rreeggccoommpp(3).
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: rreeggeexx(3)
+
+       _r_e_g_m_a_t_c_h___t
+              _I_n_c_l_u_d_e: _<_r_e_g_e_x_._h_>.
+
+              typedef struct {
+                  regoff_t    rm_so; /* Byte offset from start of string
+                                        to start of substring */
+                  regoff_t    rm_eo; /* Byte offset from start of string of
+                                        the first character after the end of
+                                        substring */
+              } regmatch_t;
+
+              This is a structure type used in regular expression matching.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: rreeggeexxeecc(3)
+
+       _r_e_g_o_f_f___t
+              _I_n_c_l_u_d_e: _<_r_e_g_e_x_._h_>.
+
+              According to POSIX, it shall be a signed integer type capable of storing the largest value that can be stored in either a _p_t_r_d_i_f_f___t type or a _s_s_i_z_e___t type.
+
+              _V_e_r_s_i_o_n_s: Prior to POSIX.1-2008, the type was capable of storing the largest value that can be stored in either an _o_f_f___t type or a _s_s_i_z_e___t type.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: the _r_e_g_m_a_t_c_h___t structure and the _p_t_r_d_i_f_f___t and _s_s_i_z_e___t types in this page.
+
+       _s_i_g_e_v_e_n_t
+              _I_n_c_l_u_d_e: _<_s_i_g_n_a_l_._h_>.  Alternatively, _<_a_i_o_._h_>, _<_m_q_u_e_u_e_._h_>, or _<_t_i_m_e_._h_>.
+
+              struct sigevent {
+                  int             sigev_notify; /* Notification type */
+                  int             sigev_signo;  /* Signal number */
+                  union sigval    sigev_value;  /* Signal value */
+                  void          (*sigev_notify_function)(union sigval);
+                                                /* Notification function */
+                  pthread_attr_t *sigev_notify_attributes;
+                                                /* Notification attributes */
+              };
+
+              For further details about this type, see ssiiggeevveenntt(7).
+
+              _V_e_r_s_i_o_n_s: _<_a_i_o_._h_> and _<_t_i_m_e_._h_> define _s_i_g_e_v_e_n_t since POSIX.1-2008.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: ttiimmeerr__ccrreeaattee(2), ggeettaaddddrriinnffoo__aa(3), lliioo__lliissttiioo(3), mmqq__nnoottiiffyy(3)
+
+              See also the _a_i_o_c_b structure in this page.
+
+       _s_i_g_i_n_f_o___t
+              _I_n_c_l_u_d_e: _<_s_i_g_n_a_l_._h_>.  Alternatively, _<_s_y_s_/_w_a_i_t_._h_>.
+
+              typedef struct {
+                  int      si_signo;  /* Signal number */
+                  int      si_code;   /* Signal code */
+                  pid_t    si_pid;    /* Sending process ID */
+                  uid_t    si_uid;    /* Real user ID of sending process */
+                  void    *si_addr;   /* Address of faulting instruction */
+                  int      si_status; /* Exit value or signal */
+                  union sigval si_value;  /* Signal value */
+              } siginfo_t;
+
+              Information associated with a signal.  For further details on this structure (including additional, Linux-specific fields), see ssiiggaaccttiioonn(2).
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: ppiiddffdd__sseenndd__ssiiggnnaall(2), rrtt__ssiiggqquueeuueeiinnffoo(2), ssiiggaaccttiioonn(2), ssiiggwwaaiittiinnffoo(2), ppssiiggiinnffoo(3)
+
+       _s_i_g_s_e_t___t
+              _I_n_c_l_u_d_e: _<_s_i_g_n_a_l_._h_>.  Alternatively, _<_s_p_a_w_n_._h_>, or _<_s_y_s_/_s_e_l_e_c_t_._h_>.
+
+              This is a type that represents a set of signals.  According to POSIX, this shall be an integer or structure type.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: eeppoollll__ppwwaaiitt(2), ppppoollll(2), ppsseelleecctt(2), ssiiggaaccttiioonn(2), ssiiggnnaallffdd(2), ssiiggppeennddiinngg(2), ssiiggpprrooccmmaasskk(2), ssiiggssuussppeenndd(2), ssiiggwwaaiittiinnffoo(2), ssiiggnnaall(7)
+
+       _s_i_g_v_a_l
+              _I_n_c_l_u_d_e: _<_s_i_g_n_a_l_._h_>.
+
+              union sigval {
+                  int     sigval_int; /* Integer value */
+                  void   *sigval_ptr; /* Pointer value */
+              };
+
+              Data passed with a signal.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: pptthhrreeaadd__ssiiggqquueeuuee(3), ssiiggqquueeuuee(3), ssiiggeevveenntt(7)
+
+              See also the _s_i_g_e_v_e_n_t structure and the _s_i_g_i_n_f_o___t type in this page.
+
+       _s_i_z_e___t
+              _I_n_c_l_u_d_e:  _<_s_t_d_d_e_f_._h_>  or  _<_s_y_s_/_t_y_p_e_s_._h_>.   Alternatively,  _<_a_i_o_._h_>,  _<_g_l_o_b_._h_>, _<_g_r_p_._h_>, _<_i_c_o_n_v_._h_>, _<_m_o_n_e_t_a_r_y_._h_>, _<_m_q_u_e_u_e_._h_>, _<_n_d_b_m_._h_>, _<_p_w_d_._h_>, _<_r_e_g_e_x_._h_>, _<_s_e_a_r_c_h_._h_>, _<_s_i_g_n_a_l_._h_>,
+              _<_s_t_d_i_o_._h_>, _<_s_t_d_l_i_b_._h_>, _<_s_t_r_i_n_g_._h_>, _<_s_t_r_i_n_g_s_._h_>, _<_s_y_s_/_m_m_a_n_._h_>, _<_s_y_s_/_m_s_g_._h_>, _<_s_y_s_/_s_e_m_._h_>, _<_s_y_s_/_s_h_m_._h_>, _<_s_y_s_/_s_o_c_k_e_t_._h_>, _<_s_y_s_/_u_i_o_._h_>, _<_t_i_m_e_._h_>, _<_u_n_i_s_t_d_._h_>, _<_w_c_h_a_r_._h_>, or _<_w_o_r_d_e_x_p_._h_>.
+
+              Used for a count of bytes.  It is the result of the _s_i_z_e_o_f operator.  According to the C language standard, it shall be an unsigned integer type capable of storing values in  the
+              range [0, SSIIZZEE__MMAAXX].  According to POSIX, the implementation shall support one or more programming environments where the width of _s_i_z_e___t is no greater than the width of the type
+              _l_o_n_g.
+
+              The length modifier for _s_i_z_e___t for the pprriinnttff(3) and the ssccaannff(3) families of functions is zz; resulting commonly in %%zzuu or %%zzxx for printing _s_i_z_e___t values.
+
+              _V_e_r_s_i_o_n_s: _<_a_i_o_._h_>, _<_g_l_o_b_._h_>, _<_g_r_p_._h_>, _<_i_c_o_n_v_._h_>, _<_m_q_u_e_u_e_._h_>, _<_p_w_d_._h_>, _<_s_i_g_n_a_l_._h_>, and _<_s_y_s_/_s_o_c_k_e_t_._h_> define _s_i_z_e___t since POSIX.1-2008.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: rreeaadd(2), wwrriittee(2), ffrreeaadd(3), ffwwrriittee(3), mmeemmccmmpp(3), mmeemmccppyy(3), mmeemmsseett(3), ooffffsseettooff(3)
+
+              See also the _p_t_r_d_i_f_f___t and _s_s_i_z_e___t types in this page.
+
+       _s_s_i_z_e___t
+              _I_n_c_l_u_d_e: _<_s_y_s_/_t_y_p_e_s_._h_>.  Alternatively, _<_a_i_o_._h_>, _<_m_o_n_e_t_a_r_y_._h_>, _<_m_q_u_e_u_e_._h_>, _<_s_t_d_i_o_._h_>, _<_s_y_s_/_m_s_g_._h_>, _<_s_y_s_/_s_o_c_k_e_t_._h_>, _<_s_y_s_/_u_i_o_._h_>, or _<_u_n_i_s_t_d_._h_>.
+
+              Used for a count of bytes or an error indication.  According to POSIX, it shall be a signed integer type capable of storing values at least in the range [-1, SSSSIIZZEE__MMAAXX], and  the
+              implementation shall support one or more programming environments where the width of _s_s_i_z_e___t is no greater than the width of the type _l_o_n_g.
+
+              Glibc  and most other implementations provide a length modifier for _s_s_i_z_e___t for the pprriinnttff(3) and the ssccaannff(3) families of functions, which is zz; resulting commonly in %%zzdd or %%zzii
+              for printing _s_s_i_z_e___t values.  Although zz works for _s_s_i_z_e___t on most implementations, portable POSIX programs should avoid using it—for example, by converting the value to _i_n_t_m_a_x___t
+              and using its length modifier (jj).
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: rreeaadd(2), rreeaaddlliinnkk(2), rreeaaddvv(2), rreeccvv(2), sseenndd(2), wwrriittee(2)
+
+              See also the _p_t_r_d_i_f_f___t and _s_i_z_e___t types in this page.
+
+       _s_u_s_e_c_o_n_d_s___t
+              _I_n_c_l_u_d_e: _<_s_y_s_/_t_y_p_e_s_._h_>.  Alternatively, _<_s_y_s_/_s_e_l_e_c_t_._h_>, or _<_s_y_s_/_t_i_m_e_._h_>.
+
+              Used  for time in microseconds.  According to POSIX, it shall be a signed integer type capable of storing values at least in the range [-1, 1000000], and the implementation shall
+              support one or more programming environments where the width of _s_u_s_e_c_o_n_d_s___t is no greater than the width of the type _l_o_n_g.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: the _t_i_m_e_v_a_l structure in this page.
+
+       _t_i_m_e___t
+              _I_n_c_l_u_d_e: _<_t_i_m_e_._h_> or _<_s_y_s_/_t_y_p_e_s_._h_>.  Alternatively, _<_s_c_h_e_d_._h_>, _<_s_y_s_/_m_s_g_._h_>, _<_s_y_s_/_s_e_l_e_c_t_._h_>, _<_s_y_s_/_s_e_m_._h_>, _<_s_y_s_/_s_h_m_._h_>, _<_s_y_s_/_s_t_a_t_._h_>, _<_s_y_s_/_t_i_m_e_._h_>, or _<_u_t_i_m_e_._h_>.
+
+              Used for time in seconds.  According to POSIX, it shall be an integer type.
+
+              _V_e_r_s_i_o_n_s: _<_s_c_h_e_d_._h_> defines _t_i_m_e___t since POSIX.1-2008.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: ssttiimmee(2), ttiimmee(2), ccttiimmee(3), ddiiffffttiimmee(3)
+
+       _t_i_m_e_r___t
+              _I_n_c_l_u_d_e: _<_s_y_s_/_t_y_p_e_s_._h_>.  Alternatively, _<_t_i_m_e_._h_>.
+
+              Used for timer ID returned by ttiimmeerr__ccrreeaattee(2).  According to POSIX, there are no defined comparison or assignment operators for this type.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: ttiimmeerr__ccrreeaattee(2), ttiimmeerr__ddeelleettee(2), ttiimmeerr__ggeettoovveerrrruunn(2), ttiimmeerr__sseettttiimmee(2)
+
+       _t_i_m_e_s_p_e_c
+              _I_n_c_l_u_d_e: _<_t_i_m_e_._h_>.  Alternatively, _<_a_i_o_._h_>, _<_m_q_u_e_u_e_._h_>, _<_s_c_h_e_d_._h_>, _<_s_i_g_n_a_l_._h_>, _<_s_y_s_/_s_e_l_e_c_t_._h_>, or _<_s_y_s_/_s_t_a_t_._h_>.
+
+              struct timespec {
+                  time_t  tv_sec;  /* Seconds */
+                  long    tv_nsec; /* Nanoseconds */
+              };
+
+              Describes times in seconds and nanoseconds.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C11 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: cclloocckk__ggeettttiimmee(2), cclloocckk__nnaannoosslleeeepp(2), nnaannoosslleeeepp(2), ttiimmeerrffdd__ggeettttiimmee(2), ttiimmeerr__ggeettttiimmee(2)
+
+       _t_i_m_e_v_a_l
+              _I_n_c_l_u_d_e: _<_s_y_s_/_t_i_m_e_._h_>.  Alternatively, _<_s_y_s_/_r_e_s_o_u_r_c_e_._h_>, _<_s_y_s_/_s_e_l_e_c_t_._h_>, or _<_u_t_m_p_x_._h_>.
+
+              struct timeval {
+                  time_t      tv_sec;  /* Seconds */
+                  suseconds_t tv_usec; /* Microseconds */
+              };
+
+              Describes times in seconds and microseconds.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: ggeettttiimmeeooffddaayy(2), sseelleecctt(2), uuttiimmeess(2), aaddjjttiimmee(3), ffuuttiimmeess(3), ttiimmeerraadddd(3)
+
+       _u_i_d___t
+              _I_n_c_l_u_d_e: _<_s_y_s_/_t_y_p_e_s_._h_>.  Alternatively, _<_p_w_d_._h_>, _<_s_i_g_n_a_l_._h_>, _<_s_t_r_o_p_t_s_._h_>, _<_s_y_s_/_i_p_c_._h_>, _<_s_y_s_/_s_t_a_t_._h_>, or _<_u_n_i_s_t_d_._h_>.
+
+              A type used to hold user IDs.  According to POSIX, this shall be an integer type.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: cchhoowwnn(2), ggeettuuiidd(2), ggeetteeuuiidd(2), ggeettrreessuuiidd(2), ggeettppwwnnaamm(2), ccrreeddeennttiiaallss(7)
+
+       _u_i_n_t_m_a_x___t
+              _I_n_c_l_u_d_e: _<_s_t_d_i_n_t_._h_>.  Alternatively, _<_i_n_t_t_y_p_e_s_._h_>.
+
+              An unsigned integer type capable of representing any value of any unsigned integer type supported by the implementation.  According to the C language standard, it shall be  capa‐
+              ble of storing values in the range [0, UUIINNTTMMAAXX__MMAAXX].
+
+              The macro UUIINNTTMMAAXX__CC() expands its argument to an integer constant of type _u_i_n_t_m_a_x___t.
+
+              The length modifier for _u_i_n_t_m_a_x___t for the pprriinnttff(3) and the ssccaannff(3) families of functions is jj; resulting commonly in %%jjuu or %%jjxx for printing _u_i_n_t_m_a_x___t values.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _B_u_g_s:  _u_i_n_t_m_a_x___t  is  not large enough to represent values of type _u_n_s_i_g_n_e_d _____i_n_t_1_2_8 in implementations where _u_n_s_i_g_n_e_d _____i_n_t_1_2_8 is defined and _u_n_s_i_g_n_e_d _l_o_n_g _l_o_n_g is less than 128
+              bits wide.
+
+              _S_e_e _a_l_s_o: the _i_n_t_m_a_x___t type in this page.
+
+       _u_i_n_tN___t
+              _I_n_c_l_u_d_e: _<_s_t_d_i_n_t_._h_>.  Alternatively, _<_i_n_t_t_y_p_e_s_._h_>.
+
+              _u_i_n_t_8___t, _u_i_n_t_1_6___t, _u_i_n_t_3_2___t, _u_i_n_t_6_4___t
+
+              An unsigned integer type of a fixed width of exactly N bits, N being the value specified in its type name.  According to the C language standard, they shall be capable of storing
+              values in the range [0, UUIINNTTN__MMAAXX], substituting N by the appropriate number.
+
+              According  to  POSIX,  _u_i_n_t_8___t, _u_i_n_t_1_6___t, and _u_i_n_t_3_2___t are required; _u_i_n_t_6_4___t is only required in implementations that provide integer types with width 64; and all other types of
+              this form are optional.
+
+              The length modifiers for the _u_i_n_tN___t types for the pprriinnttff(3) family of functions are expanded by macros of the forms PPRRIIuuN, PPRRIIooN, PPRRIIxxN, and PPRRIIXXN (defined in _<_i_n_t_t_y_p_e_s_._h_>); re‐
+              sulting  for  example  in  %%""PPRRIIuu3322""  or  %%""PPRRIIxx3322"" for printing _u_i_n_t_3_2___t values.  The length modifiers for the _u_i_n_tN___t types for the ssccaannff(3) family of functions are expanded by
+              macros of the forms SSCCNNuuN, SSCCNNooN, SSCCNNxxN, and SSCCNNXXN (defined in _<_i_n_t_t_y_p_e_s_._h_>); resulting for example in %%""SSCCNNuu1166"" or %%""SSCCNNxx1166"" for scanning _u_i_n_t_1_6___t values.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: the _i_n_t_m_a_x___t, _i_n_tN___t, and _u_i_n_t_m_a_x___t types in this page.
+
+       _u_i_n_t_p_t_r___t
+              _I_n_c_l_u_d_e: _<_s_t_d_i_n_t_._h_>.  Alternatively, _<_i_n_t_t_y_p_e_s_._h_>.
+
+              An unsigned integer type such that any valid (_v_o_i_d _*) value can be converted to this type and back.  According to the C language standard, it shall be capable of  storing  values
+              in the range [0, UUIINNTTPPTTRR__MMAAXX].
+
+              The length modifier for _u_i_n_t_p_t_r___t for the pprriinnttff(3) family of functions is expanded by the macros PPRRIIuuPPTTRR, PPRRIIooPPTTRR, PPRRIIxxPPTTRR, and PPRRIIXXPPTTRR (defined in _<_i_n_t_t_y_p_e_s_._h_>); resulting com‐
+              monly in %%""PPRRIIuuPPTTRR"" or %%""PPRRIIxxPPTTRR"" for printing _u_i_n_t_p_t_r___t values.  The length modifier for _u_i_n_t_p_t_r___t for the ssccaannff(3) family of functions is expanded by the  macros  SSCCNNuuPPTTRR,,  SSCC‐‐
+              NNooPPTTRR,, SSCCNNxxPPTTRR, and SSCCNNXXPPTTRR (defined in _<_i_n_t_t_y_p_e_s_._h_>); resulting commonly in %%""SSCCNNuuPPTTRR"" or %%""SSCCNNxxPPTTRR"" for scanning _u_i_n_t_p_t_r___t values.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: the _i_n_t_p_t_r___t and _v_o_i_d _* types in this page.
+
+       _v_a___l_i_s_t
+              _I_n_c_l_u_d_e: _<_s_t_d_a_r_g_>.  Alternatively, _<_s_t_d_i_o_._h_>, or _<_w_c_h_a_r_._h_>.
+
+              Used  by  functions  with a varying number of arguments of varying types.  The function must declare an object of type _v_a___l_i_s_t which is used by the macros vvaa__ssttaarrtt(3), vvaa__aarrgg(3),
+              vvaa__ccooppyy(3), and vvaa__eenndd(3) to traverse the list of arguments.
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: vvaa__ssttaarrtt(3), vvaa__aarrgg(3), vvaa__ccooppyy(3), vvaa__eenndd(3)
+
+       _v_o_i_d _*
+              According to the C language standard, a pointer to any object type may be converted to a pointer to _v_o_i_d and back.  POSIX further requires that any pointer, including pointers to
+              functions, may be converted to a pointer to _v_o_i_d and back.
+
+              Conversions  from and to any other pointer type are done implicitly, not requiring casts at all.  Note that this feature prevents any kind of type checking: the programmer should
+              be careful not to convert a _v_o_i_d _* value to a type incompatible to that of the underlying data, because that would result in undefined behavior.
+
+              This type is useful in function parameters and return value to allow passing values of any type.  The function will typically use some mechanism to know the real type of the data
+              being passed via a pointer to _v_o_i_d.
+
+              A  value of this type can't be dereferenced, as it would give a value of type _v_o_i_d, which is not possible.  Likewise, pointer arithmetic is not possible with this type.  However,
+              in GNU C, pointer arithmetic is allowed as an extension to the standard; this is done by treating the size of a _v_o_i_d or of a function as 1.  A consequence of this is that  _s_i_z_e_o_f
+              is also allowed on _v_o_i_d and on function types, and returns 1.
+
+              The conversion specifier for _v_o_i_d _* for the pprriinnttff(3) and the ssccaannff(3) families of functions is pp.
+
+              _V_e_r_s_i_o_n_s: The POSIX requirement about compatibility between _v_o_i_d _* and function pointers was added in POSIX.1-2008 Technical Corrigendum 1 (2013).
+
+              _C_o_n_f_o_r_m_i_n_g _t_o: C99 and later; POSIX.1-2001 and later.
+
+              _S_e_e _a_l_s_o: mmaalllloocc(3), mmeemmccmmpp(3), mmeemmccppyy(3), mmeemmsseett(3)
+
+              See also the _i_n_t_p_t_r___t and _u_i_n_t_p_t_r___t types in this page.
+
+NNOOTTEESS
+       The structures described in this manual page shall contain, at least, the members shown in their definition, in no particular order.
+
+       Most  of  the  integer  types described in this page don't have a corresponding length modifier for the pprriinnttff(3) and the ssccaannff(3) families of functions.  To print a value of an integer
+       type that doesn't have a length modifier, it should be converted to _i_n_t_m_a_x___t or _u_i_n_t_m_a_x___t by an explicit cast.  To scan into a variable of an integer type that  doesn't  have  a  length
+       modifier,  an  intermediate temporary variable of type _i_n_t_m_a_x___t or _u_i_n_t_m_a_x___t should be used.  When copying from the temporary variable to the destination variable, the value could over‐
+       flow.  If the type has upper and lower limits, the user should check that the value is within those limits, before actually copying the value.  The example below shows how these conver‐
+       sions should be done.
+
+   CCoonnvveennttiioonnss uusseedd iinn tthhiiss ppaaggee
+       In "Conforming to" we only concern ourselves with C99 and later and POSIX.1-2001 and later.  Some types may be specified in earlier versions of one of these standards, but in the inter‐
+       ests of simplicity we omit details from earlier standards.
+
+       In "Include", we first note the "primary" header(s) that define the type according to either the C or POSIX.1 standards.  Under "Alternatively", we  note  additional  headers  that  the
+       standards specify shall define the type.
+
+EEXXAAMMPPLLEESS
+       The program shown below scans from a string and prints a value stored in a variable of an integer type that doesn't have a length modifier.  The appropriate conversions from and to _i_n_t_‐
+       _m_a_x___t, and the appropriate range checks, are used as explained in the notes section above.
+
+       #include <stdint.h>
+       #include <stdio.h>
+       #include <stdlib.h>
+       #include <sys/types.h>
+
+       int
+       main (void)
+       {
+           static const char *const str = "500000 us in half a second";
+           suseconds_t us;
+           intmax_t    tmp;
+
+           /* Scan the number from the string into the temporary variable */
+
+           sscanf(str, "%jd", &tmp);
+
+           /* Check that the value is within the valid range of suseconds_t */
+
+           if (tmp < -1 || tmp > 1000000) {
+               fprintf(stderr, "Scanned value outside valid range!\n");
+               exit(EXIT_FAILURE);
+           }
+
+           /* Copy the value to the suseconds_t variable 'us' */
+
+           us = tmp;
+
+           /* Even though suseconds_t can hold the value -1, this isn't
+              a sensible number of microseconds */
+
+           if (us < 0) {
+               fprintf(stderr, "Scanned value shouldn't be negative!\n");
+               exit(EXIT_FAILURE);
+           }
+
+           /* Print the value */
+
+           printf("There are %jd microseconds in half a second.\n",
+                   (intmax_t) us);
+
+           exit(EXIT_SUCCESS);
+       }
+
+SSEEEE AALLSSOO
+       ffeeaattuurree__tteesstt__mmaaccrrooss(7), ssttaannddaarrddss(7)
+
+CCOOLLOOPPHHOONN
+       This page is part of release 5.10 of the Linux _m_a_n_-_p_a_g_e_s project.  A description of the project, information about reporting bugs, and the latest version of this page, can be  found  at
+       https://www.kernel.org/doc/man-pages/.
+
+Linux                                                                                      2020-12-21                                                                       SYSTEM_DATA_TYPES(7)
