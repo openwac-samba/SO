@@ -25,7 +25,7 @@ int ex2 ()
             break;
         //Pai
         default:
-            printf ("Pai com o p_id %i, filho de %i, e tem como filho %i\n");
+            printf ("Pai com o p_id %i, filho de %i, e tem como filho %i\n", getpid(), getppid(), f);
             wait (&status);
     }
     return 0;
