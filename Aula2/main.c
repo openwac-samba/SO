@@ -25,17 +25,41 @@ int ex2 ()
             break;
         //Pai
         default:
-            printf ("Pai com o p_id %i, filho de %i, e tem como filho %i\n", getpid(), getppid(), f);
+            printf ("Pai com o p_id %i, filho de %i, e tem como filho %i\n", getpid (), getppid (), f);
             wait (&status);
     }
     return 0;
 }
 
-int main (int argsc, char* argsv[])
+int ex3 ()
 {
-    int n= atoi (argsv [1]);
-    if (argsc> 1)
+    int f, status;
+    for (int i= 0; i< 10; i++)
     {
+        //Filho
+        if (!(f= fork()))
+        {
+            printf ("Filho com p_id: %i\n", getpid ());
+            //Saida do cículo clean
+            i= 10;
+        }
+        else
+        {
+            wait (&status);
+            if (WIFEXITED (status))
+                printf ("Processo filho concluiu com estado %i\n", WEXITSTATUS (status));
+            else
+                printf ("Processozito sofreu\n");
+        }
+    }
+    return 0;
+}
+
+int main (int argsc, char* argsv [])
+{
+    if (argsc== 2)
+    {
+        int n= atoi (argsv [1]);
         switch (n)
         {
             case 1:
@@ -43,6 +67,9 @@ int main (int argsc, char* argsv[])
                 break;
             case 2:
                 ex2 ();
+                break;
+            case 3:
+                ex3 ();
                 break;
         }
     }
